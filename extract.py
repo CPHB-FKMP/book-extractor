@@ -38,7 +38,7 @@ def main():
 
     cities_csv = pd.read_csv('data/cities/cities15000.csv', header=0, sep=';', usecols=['englishName', 'latitude', 'longitude'])
 
-    books = dict()
+    books = list()
     authors = set()
     complete_author_list = list()
     cities = set()
@@ -60,7 +60,8 @@ def main():
 
     for th in futures:
         result = th.result()
-        books.update(result[0])
+        books.append(result[0])
+        exit(1)
         for author in result[1]:
             authors.add(author)
 
@@ -79,7 +80,6 @@ def main():
         writer = csv.writer(csv_file, delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
         writer.writerow(['id', 'title'])
         for value in books:
-            pp.pprint(value)
             title = value['title']
             title = title.rstrip()
             title = " ".join(title.split())
@@ -97,17 +97,17 @@ def main():
         writer = csv.writer(csv_file, delimiter=';')
         writer.writerow(['book_id', 'latitude', 'longitude'])
 
-        for key, value in books.items():
-            for city in books[key]['cities']:
-                writer.writerow([key, city[1], city[2]])
+        for book in books:
+            for city in book['cities']:
+                writer.writerow([book['id'], city[1], city[2]])
 
     with open('data/csv/books-authors.csv', 'w+', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=';')
         writer.writerow(['book_id', 'author_id'])
-        for key, value in books.items():
-            for author in books[key]['authors']:
+        for book in books:
+            for author in book['authors']:
                 auth = [item for item in complete_author_list if item[1] == author]
-                writer.writerow([key, auth[0][0]])
+                writer.writerow([book['id'], auth[0][0]])
 
 
 def get_results(root, file, cities_csv, count):
