@@ -8,30 +8,30 @@ pp = pprint.PrettyPrinter(indent=2)
 def main():
     print("Main method called")
 
-    # files = glob.glob('root/zipfiles/*')
-    # for f in files:
-    #     os.remove(f)
-    #
-    # shutil.rmtree('data/books')
-    # if not os.path.exists('data/books'):
-    #     os.makedirs('data/books')
-    #
-    # tar = tarfile.open(name="root/archive.tar")
-    # tar.extractall()
-    #
-    # dir_name = "root/zipfiles"
-    # extension = ".zip"
-    #
-    # for item in os.listdir(dir_name):
-    #     if item.endswith(extension):
-    #         file_name = dir_name + "/" + item
-    #         zip_ref = zipfile.ZipFile(file_name) # create zipfile object
-    #         try:
-    #             zip_ref.extractall("data/books") # extract file to dir
-    #             print(file_name)
-    #         except NotImplementedError:
-    #             print("Could not unzip: " + file_name + " - continuing")
-    #         zip_ref.close()
+    files = glob.glob('root/zipfiles/*')
+    for f in files:
+        os.remove(f)
+
+    shutil.rmtree('data/books')
+    if not os.path.exists('data/books'):
+        os.makedirs('data/books')
+
+    tar = tarfile.open(name="root/archive.tar")
+    tar.extractall()
+
+    dir_name = "root/zipfiles"
+    extension = ".zip"
+
+    for item in os.listdir(dir_name):
+        if item.endswith(extension):
+            file_name = dir_name + "/" + item
+            zip_ref = zipfile.ZipFile(file_name) # create zipfile object
+            try:
+                zip_ref.extractall("data/books") # extract file to dir
+                print(file_name)
+            except NotImplementedError:
+                print("Could not unzip: " + file_name + " - continuing")
+            zip_ref.close()
 
     dir_name = "data/books"
     extension = ".txt"
@@ -61,7 +61,7 @@ def main():
     for th in futures:
         result = th.result()
         books.append(result[0])
-        exit(1)
+
         for author in result[1]:
             authors.add(author)
 
