@@ -2,6 +2,7 @@ import tarfile, os, zipfile, re, pprint, csv, glob, shutil
 import pandas as pd
 import regex
 from concurrent.futures import ProcessPoolExecutor
+import concurrent
 
 pp = pprint.PrettyPrinter(indent=2)
 
@@ -43,7 +44,7 @@ def main():
     complete_author_list = list()
     cities = set()
 
-    th_ex = ProcessPoolExecutor(max_workers=4)
+    th_ex = ProcessPoolExecutor(max_workers=6)
     futures = []
 
     count = 0
@@ -58,15 +59,20 @@ def main():
     th_ex.shutdown(wait=True)
     print("Done with everything. Unwrapping results...")
 
+    broken_count = 0
     for th in futures:
-        result = th.result()
-        books.append(result[0])
+        try:
+            result = th.result()
+            books.append(result[0])
 
-        for author in result[1]:
-            authors.add(author)
+            for author in result[1]:
+                authors.add(author)
 
-        for city in result[2]:
-            cities.add(city)
+            for city in result[2]:
+                cities.add(city)
+        except concurrent.futures.process.BrokenProcessPool:
+            broken_count = broken_count + 1
+            print("BrokenProcessPool: #%d" % broken_count)
 
     for idx, val in enumerate(authors):
         complete_author_list.append((idx, val))
