@@ -76,14 +76,14 @@ def main():
 
     for idx, val in enumerate(authors):
         complete_author_list.append((idx, val))
-    with open('data/csv/cities.csv', 'w+', newline='') as csv_file:
-        writer = csv.writer(csv_file, delimiter=';')
+    with open('data/csv/cities.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file, delimiter=';', escapechar='\\')
         writer.writerow(['name', 'latitude', 'longitude'])
         for city in cities:
             writer.writerow(city)
 
-    with open('data/csv/books.csv', 'w+', newline='') as csv_file:
-        writer = csv.writer(csv_file, delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
+    with open('data/csv/books.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file, delimiter='|', escapechar='\\')
         writer.writerow(['id', 'title'])
         for value in books:
             title = value['title']
@@ -91,8 +91,8 @@ def main():
             title = " ".join(title.split())
             writer.writerow([value['id'], title])
 
-    with open('data/csv/authors.csv', 'w+', newline='') as csv_file:
-        writer = csv.writer(csv_file, delimiter=';', quoting=csv.QUOTE_NONE, quotechar='')
+    with open('data/csv/authors.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file, delimiter='|', escapechar='\\')
         writer.writerow(['id', 'name'])
         for author in complete_author_list:
             auth = " ".join(author[1].split())
@@ -100,7 +100,7 @@ def main():
                 writer.writerow([author[0], auth])
 
     with open('data/csv/books-cities.csv', 'w+', newline='') as csv_file:
-        writer = csv.writer(csv_file, delimiter=';')
+        writer = csv.writer(csv_file, delimiter='|')
         writer.writerow(['book_id', 'latitude', 'longitude'])
 
         for book in books:
@@ -108,7 +108,7 @@ def main():
                 writer.writerow([book['id'], city[1], city[2]])
 
     with open('data/csv/books-authors.csv', 'w+', newline='') as csv_file:
-        writer = csv.writer(csv_file, delimiter=';')
+        writer = csv.writer(csv_file, delimiter='|')
         writer.writerow(['book_id', 'author_id'])
         for book in books:
             for author in book['authors']:
