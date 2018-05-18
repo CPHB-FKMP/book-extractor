@@ -9,30 +9,30 @@ pp = pprint.PrettyPrinter(indent=2)
 def main():
     print("Main method called")
 
-    files = glob.glob('root/zipfiles/*')
-    for f in files:
-        os.remove(f)
-
-    shutil.rmtree('data/books')
-    if not os.path.exists('data/books'):
-        os.makedirs('data/books')
-
-    tar = tarfile.open(name="root/archive.tar")
-    tar.extractall()
-
-    dir_name = "root/zipfiles"
-    extension = ".zip"
-
-    for item in os.listdir(dir_name):
-        if item.endswith(extension):
-            file_name = dir_name + "/" + item
-            zip_ref = zipfile.ZipFile(file_name) # create zipfile object
-            try:
-                zip_ref.extractall("data/books") # extract file to dir
-                print(file_name)
-            except NotImplementedError:
-                print("Could not unzip: " + file_name + " - continuing")
-            zip_ref.close()
+    # files = glob.glob('root/zipfiles/*')
+    # for f in files:
+    #     os.remove(f)
+    #
+    # shutil.rmtree('data/books')
+    # if not os.path.exists('data/books'):
+    #     os.makedirs('data/books')
+    #
+    # tar = tarfile.open(name="root/archive.tar")
+    # tar.extractall()
+    #
+    # dir_name = "root/zipfiles"
+    # extension = ".zip"
+    #
+    # for item in os.listdir(dir_name):
+    #     if item.endswith(extension):
+    #         file_name = dir_name + "/" + item
+    #         zip_ref = zipfile.ZipFile(file_name) # create zipfile object
+    #         try:
+    #             zip_ref.extractall("data/books") # extract file to dir
+    #             print(file_name)
+    #         except NotImplementedError:
+    #             print("Could not unzip: " + file_name + " - continuing")
+    #         zip_ref.close()
 
     dir_name = "data/books"
     extension = ".txt"
@@ -76,38 +76,78 @@ def main():
 
     for idx, val in enumerate(authors):
         complete_author_list.append((idx, val))
-    with open('data/csv/cities.csv', 'w+', newline='', encoding='utf-8') as csv_file:
-        writer = csv.writer(csv_file, delimiter=';', escapechar='\\')
-        writer.writerow(['name', 'latitude', 'longitude'])
+
+    with open('data/csv/neo-cities.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file, delimiter='|', escapechar='\\')
+        writer.writerow(['name', 'location:ID(Location-ID)'])
         for city in cities:
             writer.writerow(city)
 
-    with open('data/csv/books.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+    with open('data/csv/neo-books.csv', 'w+', newline='', encoding='utf-8') as csv_file:
         writer = csv.writer(csv_file, delimiter='|', escapechar='\\')
-        writer.writerow(['id', 'title'])
+        writer.writerow(['bookId:ID(Book-ID)', 'title'])
         for value in books:
             title = value['title']
             title = title.rstrip()
             title = " ".join(title.split())
             writer.writerow([value['id'], title])
 
-    with open('data/csv/authors.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+    with open('data/csv/neo-authors.csv', 'w+', newline='', encoding='utf-8') as csv_file:
         writer = csv.writer(csv_file, delimiter='|', escapechar='\\')
-        writer.writerow(['id', 'name'])
+        writer.writerow(['authorId:ID(Author-ID)', 'name'])
         for author in complete_author_list:
             auth = " ".join(author[1].split())
             if auth or auth is not None:
                 writer.writerow([author[0], auth])
 
-    with open('data/csv/books-cities.csv', 'w+', newline='') as csv_file:
+    with open('data/csv/neo-books-cities.csv', 'w+', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter='|')
-        writer.writerow(['book_id', 'latitude', 'longitude'])
+        writer.writerow([':START_ID(Book-ID)', ':END_ID(Location-ID)'])
 
         for book in books:
             for city in book['cities']:
-                writer.writerow([book['id'], city[1], city[2]])
+                writer.writerow([book['id'], city[1]])
 
-    with open('data/csv/books-authors.csv', 'w+', newline='') as csv_file:
+    with open('data/csv/neo-books-authors.csv', 'w+', newline='') as csv_file:
+        writer = csv.writer(csv_file, delimiter='|')
+        writer.writerow([':START_ID(Book-ID)', ':END_ID(Author-ID)'])
+        for book in books:
+            for author in book['authors']:
+                auth = [item for item in complete_author_list if item[1] == author]
+                writer.writerow([book['id'], auth[0][0]])
+
+    with open('data/csv/postgres-cities.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file, delimiter=';', escapechar='\\')
+        writer.writerow(['name', 'location'])
+        for city in cities:
+            writer.writerow(city)
+
+    with open('data/csv/postgres-books.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file, delimiter='|', escapechar='\\')
+        writer.writerow(['book_id', 'title'])
+        for value in books:
+            title = value['title']
+            title = title.rstrip()
+            title = " ".join(title.split())
+            writer.writerow([value['id'], title])
+
+    with open('data/csv/postgres-authors.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file, delimiter='|', escapechar='\\')
+        writer.writerow(['author_id', 'name'])
+        for author in complete_author_list:
+            auth = " ".join(author[1].split())
+            if auth or auth is not None:
+                writer.writerow([author[0], auth])
+
+    with open('data/csv/postgres-books-cities.csv', 'w+', newline='') as csv_file:
+        writer = csv.writer(csv_file, delimiter='|')
+        writer.writerow(['book_id', 'location'])
+
+        for book in books:
+            for city in book['cities']:
+                writer.writerow([book['id'], city[1]])
+
+    with open('data/csv/postgres-books-authors.csv', 'w+', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter='|')
         writer.writerow(['book_id', 'author_id'])
         for book in books:
@@ -162,9 +202,9 @@ def get_results(root, file, cities_csv, count):
             if city in cities_csv['englishName'].tolist():
                 rows = cities_csv[cities_csv['englishName'] == city]
                 for index, row in rows.iterrows():
-                    book['cities'].add((city, row['latitude'], row['longitude']))
+                    book['cities'].add((city, "%f,%f" % (row['latitude'], row['longitude'])))
 
-                    cities.add((city, row['latitude'], row['longitude']))
+                    cities.add((city, "%f,%f" % (row['latitude'], row['longitude'])))
 
         print("Done with #%d" % count)
         return book, authors, cities
