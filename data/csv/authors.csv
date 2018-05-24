@@ -1,121 +1,121 @@
-id;name
-0;G. K. Chesterton
-1;Robert Louis Stevenson
-2;W. Somerset Maugham
-3;Abraham Lincoln
-4;Oscar Wilde
-5;Peter Mark Roget
-6;Gene Stratton-Porter
-7;David Herbert Lawrence
-8;Norman Coombs
-9;Electronic Frontier Foundation
-10;Stephen Crane
-11;Jean Armour Polly
-12;John Bunyan
-13;Herman Melville
-14;Henry James
-15;Jean Webster
-16;Leo Tolstoy
-17;Alexander Hamilton John Jay James Madison
-18;William Morris
-19;Robert Harris
-20;Plato
-21;Henry Lawson
-22;Jules Verne
-23;Sophocles
-24;Various
-25;Andrew Lang.
-26;David Slowinski
-27;Bruce Sterling
-28;Robert Service
-29;Lucy Maud Montgomery
-30;Anonymous
-31;U.S. Census of Population and Housing U.S. Dept. of Commerce
-32;William Wells Brown
-33;Jane Austen
-34;Louisa May Alcott
-35;Rudyard Kipling
-36;Project Gutenberg
-37;Wilkie Collins
-38;Willa Cather
-39;Charles Dodgson
-40;Unknown
-41;Nathaniel Hawthorne
-42;Frederick Douglass
-43;Frank Norris
-44;George Eliot
-45;Frances Hodgson Burnett
-46;John Goodwin
-47;Robert Nemiroff Jerry Bonnell
-48;Rene Doumic
-49;Lewis Carroll
-50;Joseph Conrad
-51;Kate Chopin
-52;Edgar Rice Burroughs
-53;H. G. (Herbert George) Wells
-54;Theodore Dreiser
-55;AKA Lewis Carroll
-56;United States Central Intelligence Agency
-57;Ed Krol
-58;Susanna Rowson
-59;Library of Congress
-60;Charlotte Perkins Stetson Gilman
-61;Benjamin Franklin
-62;Gaston Leroux
-63;Richard McGowan
-64;United States. Central Intelligence Agency.
-65;William Dean Howells
-66;United States. Central Intelligence Agency
-67;Bureau of the Census
-68;Harold Frederic
-69;Mary Wollstonecraft
-70;Baroness Orczy
-71;René Descartes
-72;Scott Hemphill
-73;Arthur Conan Doyle
-74;Thomas Hardy
-75;L. Frank Baum
-76;Aesop
-77;Henry David Thoreau
-78;Samuel D. Humphrey
-79;Virgil
-80;Henry H. Snelling
-81;Edna St. Vincent Millay
-82;Christopher Morley
-83;Sax Rohmer
-84;Sun Tzu
-85;Edith Wharton
-86;Economics and Statistics Administration
-87;Charles Dickens
-88;Virginia Woolf
-89;Henry W. Longfellow
-90;Mark Twain (Samuel Clemens)
-91;Edwin A. Abbot
-92;James M. Barrie
-93;Lao-Tze
-94;Walter Scott
-95;Norman F. Joly
-96;Andrew Barton 'Banjo' Paterson
-97;Ruth M. Sprague
-98;William S. Gilbert
-99;Samuel Taylor Coleridge
-100;Franklin Delano Roosevelt
-101;Washington Irving
-102;H. G. Wells
-103;United States Bureau of the Census
-104;Brendan P. Kehoe
-105;Giuseppe Salza
-106;Anthony Hope
-107;United States
-108;Gene Stratton Porter
-109;Edwin A. Abbott
-110;Jack London
-111;W. S. Gilbert
-112;Karl Marx and Friedrich Engels
-113;John Milton
-114;Willa Cather and Alfred Noyes
-115;Odd de Presno
-116;Mark E. Laxer
-117;Winn Schwartau
-118;Founding Fathers
-119;Upton Sinclair
+authorId:ID(Author-ID)|name
+0|Library of Congress
+1|Richard McGowan
+2|Bureau of the Census
+3|Anonymous
+4|Ed Krol
+5|Lucy Maud Montgomery
+6|Peter Mark Roget
+7|Samuel Taylor Coleridge
+8|Frank Norris
+9|Winn Schwartau
+10|Aesop
+11|Alexander Hamilton John Jay James Madison
+12|James M. Barrie
+13|Robert Louis Stevenson
+14|Stephen Crane
+15|George Eliot
+16|Jules Verne
+17|Gene Stratton Porter
+18|AKA Lewis Carroll
+19|G. K. Chesterton
+20|Herman Melville
+21|Henry H. Snelling
+22|Wilkie Collins
+23|United States. Central Intelligence Agency.
+24|Rudyard Kipling
+25|Frances Hodgson Burnett
+26|Robert Nemiroff Jerry Bonnell
+27|Rene Doumic
+28|Andrew Lang.
+29|L. Frank Baum
+30|Thomas Hardy
+31|Unknown
+32|Frederick Douglass
+33|William S. Gilbert
+34|Robert Harris
+35|Lewis Carroll
+36|Jane Austen
+37|Sun Tzu
+38|Franklin Delano Roosevelt
+39|W. Somerset Maugham
+40|Lao-Tze
+41|Oscar Wilde
+42|Willa Cather
+43|Washington Irving
+44|Theodore Dreiser
+45|Sophocles
+46|United States. Central Intelligence Agency
+47|Benjamin Franklin
+48|William Dean Howells
+49|Samuel D. Humphrey
+50|United States Central Intelligence Agency
+51|Sax Rohmer
+52|Charles Dickens
+53|Electronic Frontier Foundation
+54|Gaston Leroux
+55|John Bunyan
+56|Jean Webster
+57|William Wells Brown
+58|David Slowinski
+59|Louisa May Alcott
+60|H. G. Wells
+61|Joseph Conrad
+62|Mark E. Laxer
+63|Henry James
+64|Charles Dodgson
+65|Ruth M. Sprague
+66|Charlotte Perkins Stetson Gilman
+67|Upton Sinclair
+68|Bruce Sterling
+69|Edgar Rice Burroughs
+70|Edwin A. Abbot
+71|Odd de Presno
+72|Edith Wharton
+73|Edna St. Vincent Millay
+74|Edwin A. Abbott
+75|John Goodwin
+76|Robert Service
+77|Jack London
+78|Mark Twain (Samuel Clemens)
+79|Virgil
+80|Various
+81|United States
+82|Gene Stratton-Porter
+83|Abraham Lincoln
+84|Karl Marx and Friedrich Engels
+85|Norman Coombs
+86|Leo Tolstoy
+87|U.S. Census of Population and Housing U.S. Dept. of Commerce
+88|Walter Scott
+89|United States Bureau of the Census
+90|Henry David Thoreau
+91|Jean Armour Polly
+92|Andrew Barton 'Banjo' Paterson
+93|Arthur Conan Doyle
+94|Henry Lawson
+95|René Descartes
+96|Plato
+97|Willa Cather and Alfred Noyes
+98|David Herbert Lawrence
+99|Brendan P. Kehoe
+100|Susanna Rowson
+101|W. S. Gilbert
+102|Christopher Morley
+103|Kate Chopin
+104|Baroness Orczy
+105|Project Gutenberg
+106|Scott Hemphill
+107|John Milton
+108|Founding Fathers
+109|Economics and Statistics Administration
+110|Anthony Hope
+111|Virginia Woolf
+112|H. G. (Herbert George) Wells
+113|Henry W. Longfellow
+114|William Morris
+115|Mary Wollstonecraft
+116|Norman F. Joly
+117|Harold Frederic
+118|Nathaniel Hawthorne
+119|Giuseppe Salza
